@@ -1,5 +1,7 @@
 <?php
 
+use App\Category;
+use App\Country;
 use Illuminate\Database\Seeder;
 
 class NewsTableSeeder extends Seeder
@@ -12,13 +14,12 @@ class NewsTableSeeder extends Seeder
     public function run()
     {
         $faker = Faker\Factory::create();
-        for ($i=0; $i < 243; $i++) {
+        for ($i=0; $i < 1000; $i++) {
             DB::table('news')->insert([
-                'newsTitle' => $faker->unique()->country,
-                'description' => $faker->unique()->country,
-                'country_id' => $faker->unique()->country,
-                'newsCategory_id' => $faker->unique()->country
-
+                'newsTitle' => $faker->sentence(6),
+                'description' => $faker->paragraph(5),
+                'country_id' => Country::all()->random()->id,
+                'category_id' => Category::all()->random()->id
             ]);
         }
     }

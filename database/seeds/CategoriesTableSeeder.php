@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class NewsCategoriesTableSeeder extends Seeder
+class CategoriesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,7 +13,7 @@ class NewsCategoriesTableSeeder extends Seeder
     {
         $faker = ['Sports', 'Weather','Local', 'International', 'Election', 'Entertentment', 'Economic', 'Kids', 'Jokes', 'Fation'];
         for ($i=0; $i < count($faker)-1; $i++) {
-            DB::table('newsCategories')->insert([
+            DB::table('categories')->insert([
                 'newsType' => $faker[$i]
             ]);
         }

@@ -17,12 +17,12 @@ class CreateNewsTable extends Migration
             $table->increments('id');
             $table->string('newsTitle');
             $table->text('description');
+            $table->unsignedInteger('category_id');
             $table->unsignedInteger('country_id');
-            $table->unsignedInteger('newsCategory_id');
-            $table->timestamps();
-
             $table->foreign('country_id')->references('id')->on('countries');
-            $table->foreign('newsCategory_id')->references('id')->on('newsCategories');
+
+            $table->foreign('category_id')->references('id')->on('categories');
+            $table->timestamps();
         });
     }
 
